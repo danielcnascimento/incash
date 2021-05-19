@@ -1,1 +1,1 @@
-<h1 aligh="center"> Welcome to InCash 👋</h1>
+<h1 align="center"> Welcome to InCash 👋</h1>
