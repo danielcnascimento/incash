@@ -6,8 +6,6 @@ interface IHeaderProps {
 }
 
 export function Header({onOpenNewTransactionModa}:IHeaderProps) {
-
-
     return (
       <Container>
         <Content >    

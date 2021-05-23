@@ -3,8 +3,9 @@ import Modal from 'react-modal';
 import closeImg from '../../assets/close.svg';
 import incomeImg from '../../assets/income.svg'
 import outcomeImg from '../../assets/outcome.svg'
-import { Container, TransactionTypeContainer, TypeButton } from './styles';
+import { api } from '../../services/api';
 
+import { Container, TransactionTypeContainer, TypeButton } from './styles';
 interface INewTransactionModalProps {
   isOpen: boolean;
   onRequestClose: () => void;
@@ -19,17 +20,14 @@ export function NewTransactionModal({isOpen, onRequestClose}: INewTransactionMod
   function handleTransactionSubmit(event: FormEvent) {
     event.preventDefault();
     
-    console.log({
+    const data = {
       title,
       value,
       category,
       type
-    });
+    };
 
-    setCategory('');
-    setTitle('');
-    setValue(0);
-    setType('');
+    api.post('/transactions', data);
   }
 
   return (
