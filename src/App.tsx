@@ -6,8 +6,9 @@ import { GlobalStyle } from "./styles/global";
 
 import Modal from 'react-modal';
 import { NewTransactionModal } from './components/NewTransactionModal';
+import { TransactionProvider } from './TransactionsContext';
 
-Modal.setAppElement('#root');
+Modal.setAppElement('#root'); //accessibility - will set modal on root ID.
 
 export function App() {
   const [isNewTransactionModalOpen ,setIsNewTransactionModalOpen] = useState(false)
@@ -21,7 +22,7 @@ export function App() {
   }
 
   return (
-    <div className="App">
+    <TransactionProvider>
       <Header onOpenNewTransactionModa={handleOpenNewTransactionModal} />
 
       <Dashboard />
@@ -32,6 +33,6 @@ export function App() {
       />
       
       <GlobalStyle />
-    </div>
+    </TransactionProvider>
   );
 }
