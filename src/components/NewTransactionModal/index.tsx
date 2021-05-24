@@ -14,15 +14,22 @@ interface INewTransactionModalProps {
 }
 
 export function NewTransactionModal({isOpen, onRequestClose}: INewTransactionModalProps) {
-  const transactions = useContext(TransactionsContext);
+  const { createTransaction } = useContext(TransactionsContext);
 
-  const [value, setValue] = useState(0);
+  const [amount, setAmount] = useState(0);
   const [title, setTitle] = useState('');
   const [category, setCategory] = useState('');
   const [type, setType] = useState('');
 
   function handleTransactionSubmit(event: FormEvent) {
     event.preventDefault();
+
+    createTransaction({
+      amount,
+      title,
+      category,
+      type
+    })
     
   }
 
@@ -54,8 +61,8 @@ export function NewTransactionModal({isOpen, onRequestClose}: INewTransactionMod
         <input 
           type="number" 
           placeholder='Valor'
-          value={value}
-          onChange={event => setValue(Number(event.target.value))} 
+          value={amount}
+          onChange={event => setAmount(Number(event.target.value))} 
         />
 
         <TransactionTypeContainer> 
